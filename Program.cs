@@ -6,7 +6,7 @@ namespace MordorServer
    {
       static void Main(string[] args)
       {
-         Console.WriteLine("Hello World!");
+         Server.Start();
       }
    }
 }
