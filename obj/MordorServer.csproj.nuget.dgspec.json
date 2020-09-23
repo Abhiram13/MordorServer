@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/abhiramnagadi/Documents/MordorServer/MordorServer.csproj": {}
+  },
+  "projects": {
+    "/Users/abhiramnagadi/Documents/MordorServer/MordorServer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/abhiramnagadi/Documents/MordorServer/MordorServer.csproj",
+        "projectName": "MordorServer",
+        "projectPath": "/Users/abhiramnagadi/Documents/MordorServer/MordorServer.csproj",
+        "packagesPath": "/Users/abhiramnagadi/.nuget/packages/",
+        "outputPath": "/Users/abhiramnagadi/Documents/MordorServer/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/abhiramnagadi/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.402/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

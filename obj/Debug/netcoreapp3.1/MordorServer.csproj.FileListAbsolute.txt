@@ -1,0 +1,12 @@
+/Users/abhiramnagadi/Documents/MordorServer/bin/Debug/netcoreapp3.1/MordorServer.deps.json
+/Users/abhiramnagadi/Documents/MordorServer/bin/Debug/netcoreapp3.1/MordorServer.runtimeconfig.json
+/Users/abhiramnagadi/Documents/MordorServer/bin/Debug/netcoreapp3.1/MordorServer.runtimeconfig.dev.json
+/Users/abhiramnagadi/Documents/MordorServer/bin/Debug/netcoreapp3.1/MordorServer.dll
+/Users/abhiramnagadi/Documents/MordorServer/bin/Debug/netcoreapp3.1/MordorServer.pdb
+/Users/abhiramnagadi/Documents/MordorServer/obj/Debug/netcoreapp3.1/MordorServer.csprojAssemblyReference.cache
+/Users/abhiramnagadi/Documents/MordorServer/obj/Debug/netcoreapp3.1/MordorServer.AssemblyInfoInputs.cache
+/Users/abhiramnagadi/Documents/MordorServer/obj/Debug/netcoreapp3.1/MordorServer.AssemblyInfo.cs
+/Users/abhiramnagadi/Documents/MordorServer/obj/Debug/netcoreapp3.1/MordorServer.csproj.CoreCompileInputs.cache
+/Users/abhiramnagadi/Documents/MordorServer/obj/Debug/netcoreapp3.1/MordorServer.dll
+/Users/abhiramnagadi/Documents/MordorServer/obj/Debug/netcoreapp3.1/MordorServer.pdb
+/Users/abhiramnagadi/Documents/MordorServer/obj/Debug/netcoreapp3.1/MordorServer.genruntimeconfig.cache
