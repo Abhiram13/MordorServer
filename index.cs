@@ -2,6 +2,8 @@ using System;
 using System.Net.Http;
 using System.Net;
 using System.IO;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace MordorServer
 {
@@ -13,11 +15,15 @@ namespace MordorServer
          http.Prefixes.Add("http://localhost:1995/");
          http.Start();
          Console.WriteLine("Server has Started");
+         MongoClient mongoDB = new MongoClient("mongodb+srv://abhiramDB:abhiram13@myfirstdatabase.l8kvg.mongodb.net/Models?retryWrites=true&w=majority");
+         IMongoDatabase mordorDataBase = mongoDB.GetDatabase("Mordor");
+         IMongoCollection<BsonDocument> collection = mordorDataBase.GetCollection<BsonDocument>("items");
+         Console.WriteLine(collection.CountDocuments(new BsonDocument()));
 
          while (true)
          {
             try
-            {
+            {               
                HttpListenerContext context = http.GetContext();
                using (Stream stream = context.Response.OutputStream)
                {
