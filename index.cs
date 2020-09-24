@@ -19,20 +19,35 @@ namespace MordorServer
          IMongoDatabase mordorDataBase = mongoDB.GetDatabase("Mordor");
          IMongoCollection<BsonDocument> collection = mordorDataBase.GetCollection<BsonDocument>("items");
          Console.WriteLine(collection.CountDocuments(new BsonDocument()));
-
          while (true)
          {
             try
             {               
                HttpListenerContext context = http.GetContext();
-               using (Stream stream = context.Response.OutputStream)
+
+               switch (context.Request.RawUrl)
                {
-                  using (StreamWriter writer = new StreamWriter(stream))
-                  {
-                     writer.Write("Here is the Response Message");
-                  }
-               }
-               Console.WriteLine("Respone Sent");
+                  case "/":
+                     using (Stream stream = context.Response.OutputStream)
+                     {
+                        using (StreamWriter writer = new StreamWriter(stream))
+                        {
+                           writer.Write("Here is the Response Message");
+                        }
+                     }
+                     Console.WriteLine("Respone Sent");
+                     break;
+                  case "/count/":
+                     using (Stream stream = context.Response.OutputStream)
+                     {
+                        using (StreamWriter writer = new StreamWriter(stream))
+                        {
+                           writer.Write(ListOfDB.getAllDataBase(mordorDataBase));
+                        }
+                     }
+                     Console.WriteLine("Count has Sent");
+                     break;
+               }               
             }
             catch (Exception e)
             {
