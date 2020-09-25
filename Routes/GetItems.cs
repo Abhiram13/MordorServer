@@ -25,7 +25,6 @@ namespace MordorServer
          IMongoCollection<Item> collection = mongodb.GetCollection<Item>("items");
          List<Item> list = collection.Find<Item>(new BsonDocument()).ToList<Item>();  
          string strList = JsonSerializer.Serialize(list);
-         Console.WriteLine(strList);
          return strList;
       }
    }

@@ -26,46 +26,29 @@ namespace MordorServer
                switch (context.Request.RawUrl)
                {
                   case "/":
-                     using (Stream stream = context.Response.OutputStream)
-                     {
-                        using (StreamWriter writer = new StreamWriter(stream))
-                        {
-                           writer.Write("Here is the Response Message");
-                        }
-                     }
+                     Helper<string>.SendResponse("Here is the Resonse Message", context);
                      Console.WriteLine("Respone Sent");
                      break;
                   case "/count/":
                      if (context.Request.HttpMethod == "POST")
                      {
                         context.Response.StatusCode = (int) HttpStatusCode.BadRequest;
-                        using (Stream str = context.Response.OutputStream)
-                        {
-                           using (StreamWriter writer = new StreamWriter(str))
-                           {
-                              writer.Write("The Method is wrong");
-                           }
-                        }
+                        Helper<string>.SendResponse("The Method is Wrong", context);
                         http.Stop();
                         break;
                      }
-                     using (Stream stream = context.Response.OutputStream)
-                     {
-                        using (StreamWriter writer = new StreamWriter(stream))
-                        {
-                           writer.Write(ListOfDB.getAllDataBase(mordorDataBase));
-                        }
-                     }
+                     Helper<long>.SendResponse(ListOfDB.getAllDataBase(mordorDataBase), context);
                      Console.WriteLine("Count has Sent");
                      break;
                   case "/allItems/":
-                     using (Stream stream = context.Response.OutputStream)
-                     {
-                        using (StreamWriter writer = new StreamWriter(stream))
-                        {
-                           writer.Write(GetItems.AllItem(mordorDataBase));
-                        }
-                     }
+                     // using (Stream stream = context.Response.OutputStream)
+                     // {
+                     //    using (StreamWriter writer = new StreamWriter(stream))
+                     //    {
+                     //       writer.Write(GetItems.AllItem(mordorDataBase));
+                     //    }
+                     // }
+                     Helper<string>.SendResponse(GetItems.AllItem(mordorDataBase), context);
                      Console.WriteLine("Items has Sent");
                      break;
                }
