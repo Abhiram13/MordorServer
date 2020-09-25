@@ -15,16 +15,14 @@ namespace MordorServer
          http.Prefixes.Add("http://localhost:1995/");
          http.Start();
          Console.WriteLine("Server has Started");
-         MongoClient mongoDB = new MongoClient("mongodb+srv://abhiramDB:abhiram13@myfirstdatabase.l8kvg.mongodb.net/Models?retryWrites=true&w=majority");
-         IMongoDatabase mordorDataBase = mongoDB.GetDatabase("Mordor");
-         IMongoCollection<BsonDocument> collection = mordorDataBase.GetCollection<BsonDocument>("items");
-         Console.WriteLine(collection.CountDocuments(new BsonDocument()));
          while (true)
          {
+            MongoClient mongoDB = new MongoClient("mongodb+srv://abhiramDB:abhiram13@myfirstdatabase.l8kvg.mongodb.net/Models?retryWrites=true&w=majority");
+            IMongoDatabase mordorDataBase = mongoDB.GetDatabase("Mordor");
+            IMongoCollection<BsonDocument> collection = mordorDataBase.GetCollection<BsonDocument>("items");
             try
-            {               
-               HttpListenerContext context = http.GetContext();
-
+            {
+               HttpListenerContext context = http.GetContext();               
                switch (context.Request.RawUrl)
                {
                   case "/":
@@ -38,6 +36,19 @@ namespace MordorServer
                      Console.WriteLine("Respone Sent");
                      break;
                   case "/count/":
+                     if (context.Request.HttpMethod == "POST")
+                     {
+                        context.Response.StatusCode = (int) HttpStatusCode.BadRequest;
+                        using (Stream str = context.Response.OutputStream)
+                        {
+                           using (StreamWriter writer = new StreamWriter(str))
+                           {
+                              writer.Write("The Method is wrong");
+                           }
+                        }
+                        http.Stop();
+                        break;
+                     }
                      using (Stream stream = context.Response.OutputStream)
                      {
                         using (StreamWriter writer = new StreamWriter(stream))
@@ -47,11 +58,21 @@ namespace MordorServer
                      }
                      Console.WriteLine("Count has Sent");
                      break;
-               }               
+                  case "/allItems/":
+                     using (Stream stream = context.Response.OutputStream)
+                     {
+                        using (StreamWriter writer = new StreamWriter(stream))
+                        {
+                           writer.Write(GetItems.AllItem(mordorDataBase));
+                        }
+                     }
+                     Console.WriteLine("Items has Sent");
+                     break;
+               }
             }
             catch (Exception e)
             {
-               Console.WriteLine(e);
+               Console.WriteLine(e.Message);
             }
          }
       }
