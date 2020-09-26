@@ -45,7 +45,7 @@ namespace MordorServer
                      Console.WriteLine("Items has Sent");
                      break;
                   case "/Find/":
-                     FindItems.Find(mordorDataBase, context);
+                     Helper<string>.SendResponse(FindItems.Find(mordorDataBase, context), context);
                      break;
                }
             }
