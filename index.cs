@@ -47,6 +47,9 @@ namespace MordorServer
                   case "/Find/":
                      Helper<string>.SendResponse(FindItems.Find(mordorDataBase, context), context);
                      break;
+                  case "/Update/":
+                     Helper<string>.SendResponse(Update.UpdateDoc(mordorDataBase, context), context);
+                     break;
                }
             }
             catch (Exception e)

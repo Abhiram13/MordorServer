@@ -10,7 +10,9 @@ namespace MordorServer
    class ReqBody
    {
       public string itemName { get; set; }
+      public int id { get; set; }
    }
+
    class FindItems
    {
       public static string Find(IMongoDatabase mongodb, HttpListenerContext context)
