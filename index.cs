@@ -40,16 +40,12 @@ namespace MordorServer
                      Helper<long>.SendResponse(ListOfDB.getAllDataBase(mordorDataBase), context);
                      Console.WriteLine("Count has Sent");
                      break;
-                  case "/allItems/":
-                     // using (Stream stream = context.Response.OutputStream)
-                     // {
-                     //    using (StreamWriter writer = new StreamWriter(stream))
-                     //    {
-                     //       writer.Write(GetItems.AllItem(mordorDataBase));
-                     //    }
-                     // }
+                  case "/getItems/":
                      Helper<string>.SendResponse(GetItems.AllItem(mordorDataBase), context);
                      Console.WriteLine("Items has Sent");
+                     break;
+                  case "/Find/":
+                     FindItems.Find(mordorDataBase, context);
                      break;
                }
             }
