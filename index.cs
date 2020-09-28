@@ -52,6 +52,12 @@ namespace MordorServer
                   Helper<string>.SendResponse(Login.login(mordorDataBase, context), context);
                   Console.WriteLine("Response Sent");
                   break;
+               case "/signin/":
+                  System.IO.Stream stream = context.Request.InputStream;
+                  System.Text.Encoding encode = context.Request.ContentEncoding;
+                  System.IO.StreamReader s = new StreamReader(stream, encode); 
+                  Helper<string>.SendResponse(SignUp.SignIn(s, mordorDataBase), context);
+                  break;
             }
          }
       }

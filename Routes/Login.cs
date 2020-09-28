@@ -32,7 +32,7 @@ namespace MordorServer
          return userCollection.ToArray();
       }
 
-      private static bool FindUser(IMongoCollection<User> collection, string username)
+      public static bool FindUser(IMongoCollection<User> collection, string username)
       {
          User[] Users = DeserializeJSON(collection);
          for (int i = 0; i < Users.Length; i++)
