@@ -1,0 +1,32 @@
+﻿<Properties StartupConfiguration="{3B181027-E94F-4CD7-A0B2-A6903C513AE1}|Default">
+  <MonoDevelop.Ide.ItemProperties.MordorServer PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Routes/FindDocs.cs">
+    <Files>
+      <File FileName="Helpers/OutputWrite.cs" Line="17" Column="49" />
+      <File FileName="Routes/AllDB.cs" />
+      <File FileName="Routes/FindDocs.cs" Line="26" Column="8" />
+      <File FileName="Routes/UpdateDocs.cs" />
+      <File FileName="index.cs" Line="56" Column="8" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MordorServer" expanded="True">
+            <Node name="MordorServer" expanded="True">
+              <Node name="Helpers" expanded="True" />
+              <Node name="Routes" expanded="True">
+                <Node name="FindDocs.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

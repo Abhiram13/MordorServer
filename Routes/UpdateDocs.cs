@@ -16,7 +16,6 @@ namespace MordorServer
          FilterDefinition<Item> item = Builders<Item>.Filter.Eq("itemName", body.itemName);
          UpdateDefinition<Item> updateItem = Builders<Item>.Update.Set("itemName", "Second Milk");
          UpdateResult result = database.GetCollection<Item>("items").UpdateOne(item, updateItem);
-         string st = result.ToString();
          if (result.IsAcknowledged)
          {
             FilterDefinition<Item> filteredItem = Builders<Item>.Filter.Eq("itemName", "Second Milk");

@@ -15,15 +15,13 @@ namespace MordorServer
          http.Prefixes.Add("http://localhost:1995/");
          http.Start();
          Console.WriteLine("Server has Started");
-         while (true)
+         HttpListenerContext context = http.GetContext();
+         while (http.IsListening)
          {
             MongoClient mongoDB = new MongoClient("mongodb+srv://abhiramDB:abhiram13@myfirstdatabase.l8kvg.mongodb.net/Models?retryWrites=true&w=majority");
             IMongoDatabase mordorDataBase = mongoDB.GetDatabase("Mordor");
-            IMongoCollection<BsonDocument> collection = mordorDataBase.GetCollection<BsonDocument>("items");
-            try
-            {
-               HttpListenerContext context = http.GetContext();               
-               switch (context.Request.RawUrl)
+            IMongoCollection<Item> collection = mordorDataBase.GetCollection<Item>("items");
+            switch (context.Request.RawUrl)
                {
                   case "/":
                      Helper<string>.SendResponse("Here is the Resonse Message", context);
@@ -50,12 +48,10 @@ namespace MordorServer
                   case "/Update/":
                      Helper<string>.SendResponse(Update.UpdateDoc(mordorDataBase, context), context);
                      break;
+                  case "/login/":
+                     Helper<string>.SendResponse(Login.login(mordorDataBase, context), context);
+                     break;
                }
-            }
-            catch (Exception e)
-            {
-               Console.WriteLine(e.Message);
-            }
          }
       }
    }

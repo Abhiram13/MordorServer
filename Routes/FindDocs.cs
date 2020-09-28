@@ -21,7 +21,7 @@ namespace MordorServer
          ReqBody body = JsonSerializer.Deserialize<ReqBody>(reader.ReadToEnd());
          FilterDefinition<Item> item = Builders<Item>.Filter.Eq("itemName", body.itemName);
          Item collection = mongodb.GetCollection<Item>("items").Find(item).First();
-         string str = JsonSerializer.Serialize(collection);
+         string str = JsonSerializer.Serialize(collection);         
          return str;
       }
    }
