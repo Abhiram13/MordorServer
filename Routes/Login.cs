@@ -8,7 +8,6 @@ using System.Collections.Generic;
 
 namespace MordorServer
 {
-
    class User
    {
       public MongoDB.Bson.ObjectId _id { get; set; }
@@ -27,19 +26,24 @@ namespace MordorServer
 
    class Login
    {
-      private User[] DeserializeJSON(IMongoCollection<User> collection)
+      private static User[] DeserializeJSON(IMongoCollection<User> collection)
       {
          List<User> userCollection = collection.Find<User>(new BsonDocument()).ToList<User>();
          return userCollection.ToArray();
       }
 
-      private void FindUser(IMongoCollection<User> collection)
+      private static bool FindUser(IMongoCollection<User> collection, string username)
       {
          User[] Users = DeserializeJSON(collection);
          for (int i = 0; i < Users.Length; i++)
          {
-            Console.WriteLine(Users[i].username);
+            if (username == Users[i].username)
+            {
+               return true;
+            }
          }
+
+         return false;
       }
 
       public static string login(IMongoDatabase database, HttpListenerContext context)
@@ -47,18 +51,20 @@ namespace MordorServer
          try
          {
             IMongoCollection<User> userCollection = database.GetCollection<User>("users");
-            new Login().FindUser(userCollection);
             StreamReader reader = new StreamReader(context.Request.InputStream);
             LoginCredentials body = JsonSerializer.Deserialize<LoginCredentials>(reader.ReadToEnd());
-            FilterDefinition<User> item = Builders<User>.Filter.Eq("username", body.username);                        
-            User collection = database.GetCollection<User>("users").Find(item).First();
-            string str = JsonSerializer.Serialize(collection);
-            return str;
+            
+            if (FindUser(userCollection, body.username))
+            {
+               context.Response.StatusCode = (int) HttpStatusCode.OK;
+               return "User Found";
+            }
+
+            context.Response.StatusCode = (int) HttpStatusCode.BadRequest;
+            return "User Not Found";
          }
          catch (Exception e)
          {
-            context.Response.StatusCode = (int) HttpStatusCode.BadRequest;
-            context.Response.StatusDescription = e.Message;
             Console.WriteLine("Here is the Error Message");
             Console.WriteLine(e.Message);
             return e.Message;
