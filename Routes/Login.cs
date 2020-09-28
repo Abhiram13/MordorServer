@@ -56,8 +56,10 @@ namespace MordorServer
             
             if (FindUser(userCollection, body.username))
             {
+               FilterDefinition<User> item = Builders<User>.Filter.Eq("username", body.username);
+               User collection = database.GetCollection<User>("users").Find(item).First();
                context.Response.StatusCode = (int) HttpStatusCode.OK;
-               return "User Found";
+               return JsonSerializer.Serialize(collection);
             }
 
             context.Response.StatusCode = (int) HttpStatusCode.BadRequest;
