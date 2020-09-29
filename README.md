@@ -1,4 +1,4 @@
-# MordorServer
-Mordor Server Re-Written in .NET
+# MServer
+Server Re-Written in .NET
 
 
