@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using System.Net;
 using System.IO;
+using System.Collections.Generic;
 
 namespace MordorServer
 {
@@ -18,20 +19,43 @@ namespace MordorServer
 
    class SignUp
    {
+      private static User[] DeserializeUserJSON(IMongoCollection<User> collection)
+      {
+         List<User> userCollection = collection.Find<User>(new BsonDocument()).ToList<User>();
+         return userCollection.ToArray();
+      }
+
+      public static bool FindUser(IMongoCollection<User> collection, string username)
+      {
+         User[] Users = DeserializeUserJSON(collection);
+         for (int i = 0; i < Users.Length; i++)
+         {
+            if (username == Users[i].username)
+            {
+               return true;
+            }
+         }
+
+         return false;
+      }
+
       public static string SignIn(StreamReader requestBody, IMongoDatabase db)
       {
          NewUser newUser = JsonSerializer.Deserialize<NewUser>(requestBody.ReadToEnd());
-         BsonDocument doc = new BsonDocument
+         IMongoCollection<NewUser> collection = db.GetCollection<NewUser>("users");
+         IMongoCollection<User> userDB = db.GetCollection<User>("users");
+         if (FindUser(userDB, newUser.username))
          {
-            {"username", newUser.username},
-            {"firstname", newUser.firstname},
-            {"lastname", newUser.lastname},
-            {"isAdmin", newUser.isAdmin},
-            {"password", newUser.password}
-         };
-
-         IMongoCollection<BsonDocument> collection = db.GetCollection<BsonDocument>("users");
-         collection.InsertOne(doc);
+            return "User already Exists";
+         }
+         NewUser createUser = new NewUser {
+            username = newUser.username,
+            firstname = newUser.firstname,
+            lastname = newUser.lastname,
+            password = newUser.password,
+            isAdmin = newUser.isAdmin
+         };         
+         collection.InsertOne(createUser);
          return "User Created";
       }
    }
