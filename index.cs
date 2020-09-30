@@ -1,8 +1,6 @@
 using System;
-using System.Net.Http;
 using System.Net;
 using System.IO;
-using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace MordorServer {
