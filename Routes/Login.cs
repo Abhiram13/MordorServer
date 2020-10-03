@@ -19,6 +19,7 @@ namespace MordorServer {
 
      class LoginCredentials {
           public string username { get; set; }
+          public string password { get; set; }
      }
 
      class Login {
@@ -27,10 +28,20 @@ namespace MordorServer {
                return userCollection.ToArray();
           }
 
-          public static bool FindUser(IMongoCollection<User> collection, string username) {
+          private static bool checkUser(IMongoCollection<User> collection, string password) {
                User[] Users = DeserializeJSON(collection);
                for (int i = 0; i < Users.Length; i++) {
-                    if (username == Users[i].username) {
+                    if (password == Users[i].password) {
+                         return true;
+                    }
+               }
+               return false;
+          }
+
+          private static bool FindUser(IMongoCollection<User> collection, string username, string password) {
+               User[] Users = DeserializeJSON(collection);
+               for (int i = 0; i < Users.Length; i++) {
+                    if (username == Users[i].username && password == Users[i].password) {                         
                          return true;
                     }
                }
@@ -42,13 +53,19 @@ namespace MordorServer {
                     IMongoCollection<User> userCollection = database.GetCollection<User>("users");
                     StreamReader reader = new StreamReader(context.Request.InputStream);
                     LoginCredentials body = JsonSerializer.Deserialize<LoginCredentials>(reader.ReadToEnd());
-                    if (FindUser(userCollection, body.username)) {
+
+                    if (checkUser(userCollection, body.password) == false) {
+                         context.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
+                         return "Wrong Password";
+                    }
+
+                    if (FindUser(userCollection, body.username, body.password)) {
                          FilterDefinition<User> item = Builders<User>.Filter.Eq("username", body.username);
                          User collection = database.GetCollection<User>("users").Find(item).First();
                          context.Response.StatusCode = (int)HttpStatusCode.OK;
                          return JsonSerializer.Serialize(collection);
                     }
-                    context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                    context.Response.StatusCode = (int)HttpStatusCode.NotFound;
                     return "User Not Found";
                } catch (Exception e) {
                     Console.WriteLine("Here is the Error Message");
