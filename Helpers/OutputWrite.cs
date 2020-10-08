@@ -6,12 +6,6 @@ namespace MordorServer {
      class Helper<Type> {
           public static void SendResponse(Type responseMessage, HttpListenerContext context) {
                try {
-                    foreach (string key in context.Request.Headers.AllKeys) {
-                         string[] values = context.Request.Headers.GetValues(key);
-                         foreach (string name in values) {
-                              Console.WriteLine(name);
-                         }
-                    }
                     using (Stream str = context.Response.OutputStream) {
                          using (StreamWriter writer = new StreamWriter(str)) {
                               writer.Write(responseMessage);

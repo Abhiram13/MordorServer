@@ -51,7 +51,7 @@ namespace MordorServer {
                               System.IO.Stream stream = context.Request.InputStream;
                               System.Text.Encoding encode = context.Request.ContentEncoding;
                               System.IO.StreamReader s = new StreamReader(stream, encode);
-                              Helper<string>.SendResponse(SignUp.SignIn(s, mordorDataBase), context);
+                              Helper<string>.SendResponse(SignUp.SignIn(s, mordorDataBase, context), context);
                               break;
                     }
                }
