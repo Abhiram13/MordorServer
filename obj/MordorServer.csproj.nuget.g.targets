@@ -4,6 +4,6 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)mongodb.driver.core/2.11.2/build/MongoDB.Driver.Core.targets" Condition="Exists('$(NuGetPackageRoot)mongodb.driver.core/2.11.2/build/MongoDB.Driver.Core.targets')" />
+    <Import Project="$(NuGetPackageRoot)mongodb.driver.core\2.11.2\build\MongoDB.Driver.Core.targets" Condition="Exists('$(NuGetPackageRoot)mongodb.driver.core\2.11.2\build\MongoDB.Driver.Core.targets')" />
   </ImportGroup>
 </Project>

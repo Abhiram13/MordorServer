@@ -1,25 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/Users/abhiramnagadi/Documents/MordorServer/MordorServer.csproj": {}
+    "C:\\Users\\13186\\Documents\\Github Workspaces\\Abhiram13\\MServer\\MordorServer.csproj": {}
   },
   "projects": {
-    "/Users/abhiramnagadi/Documents/MordorServer/MordorServer.csproj": {
+    "C:\\Users\\13186\\Documents\\Github Workspaces\\Abhiram13\\MServer\\MordorServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/abhiramnagadi/Documents/MordorServer/MordorServer.csproj",
+        "projectUniqueName": "C:\\Users\\13186\\Documents\\Github Workspaces\\Abhiram13\\MServer\\MordorServer.csproj",
         "projectName": "MordorServer",
-        "projectPath": "/Users/abhiramnagadi/Documents/MordorServer/MordorServer.csproj",
-        "packagesPath": "/Users/abhiramnagadi/.nuget/packages/",
-        "outputPath": "/Users/abhiramnagadi/Documents/MordorServer/obj/",
+        "projectPath": "C:\\Users\\13186\\Documents\\Github Workspaces\\Abhiram13\\MServer\\MordorServer.csproj",
+        "packagesPath": "C:\\Users\\13186\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\13186\\Documents\\Github Workspaces\\Abhiram13\\MServer\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/abhiramnagadi/.config/NuGet/NuGet.Config"
+          "C:\\Users\\13186\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -64,7 +69,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.402/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -9,7 +9,7 @@ namespace MordorServer {
          HttpListener http = new HttpListener();
          http.Prefixes.Add("http://localhost:1995/");
          http.Start();
-         Console.WriteLine("Server has Started");
+         Console.WriteLine("Server have been Started");
          while (true) {
             HttpListenerContext context = http.GetContext();
             MongoClient mongoDB = new MongoClient("mongodb+srv://abhiramDB:abhiram13@myfirstdatabase.l8kvg.mongodb.net/Models?retryWrites=true&w=majority");
