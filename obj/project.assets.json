@@ -4813,7 +4813,7 @@
       "outputPath": "/Users/abhiramnagadi/Documents/MordorServer/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/abhiramnagadi/.nuget/NuGet/NuGet.Config"
+        "/Users/abhiramnagadi/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"

@@ -36,7 +36,7 @@ namespace MordorServer {
                IMongoCollection<NewUser> collection = db.GetCollection<NewUser>("users");
                IMongoCollection<User> userDB = db.GetCollection<User>("users");
                if (FindUser(userDB, newUser.username)) {
-                    context.Response.StatusCode = (int) HttpStatusCode.Found;
+                    context.Response.StatusCode = (int)HttpStatusCode.Found;
                     return "User already Exists";
                }
                NewUser createUser = new NewUser {
