@@ -3,13 +3,20 @@ using MongoDB.Bson;
 
 namespace Types {
    class Item {
-      public ObjectId _id { get; }
+      public ObjectId? _id { get; }
       public string itemName { get; set; }
       public string description { get; set; }
       public string category { get; set; }
       public string imageURL { get; set; }
       public string categoryLogo { get; set; }
       public int rating { get; set; }
-      public int __v { get; }
+      public int? __v { get; }
+   }
+
+   class IToken {
+      public ObjectId? _id { get; }
+      public string password { get; set; }
+      public string username { get; set; }
+      public string Token { get; set; }
    }
 }
