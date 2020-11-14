@@ -1,34 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\13186\\Documents\\Github Workspaces\\Abhiram13\\MServer\\MordorServer.csproj": {}
+    "/Users/abhiramnagadi/Documents/MordorServer/MordorServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\13186\\Documents\\Github Workspaces\\Abhiram13\\MServer\\MordorServer.csproj": {
+    "/Users/abhiramnagadi/Documents/MordorServer/MordorServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\13186\\Documents\\Github Workspaces\\Abhiram13\\MServer\\MordorServer.csproj",
+        "projectUniqueName": "/Users/abhiramnagadi/Documents/MordorServer/MordorServer.csproj",
         "projectName": "MordorServer",
-        "projectPath": "C:\\Users\\13186\\Documents\\Github Workspaces\\Abhiram13\\MServer\\MordorServer.csproj",
-        "packagesPath": "C:\\Users\\13186\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\13186\\Documents\\Github Workspaces\\Abhiram13\\MServer\\obj\\",
+        "projectPath": "/Users/abhiramnagadi/Documents/MordorServer/MordorServer.csproj",
+        "packagesPath": "/Users/abhiramnagadi/.nuget/packages/",
+        "outputPath": "/Users/abhiramnagadi/Documents/MordorServer/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-<<<<<<< HEAD
           "/Users/abhiramnagadi/.nuget/NuGet/NuGet.Config"
-=======
-          "C:\\Users\\13186\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
->>>>>>> de21abf0aa16a5689c7e3cd52eca78e4845c4467
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,20 +35,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "dependencies": {
-            "MongoDB.Bson": {
-              "target": "Package",
-              "version": "[2.11.2, )"
-            },
-            "MongoDB.Driver": {
-              "target": "Package",
-              "version": "[2.11.2, )"
-            },
-            "MongoDB.Driver.Core": {
-              "target": "Package",
-              "version": "[2.11.2, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -73,7 +50,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.402/RuntimeIdentifierGraph.json"
         }
       }
     }

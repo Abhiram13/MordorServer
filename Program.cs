@@ -3,7 +3,7 @@
 namespace MordorServer {
    class Program {
       static void Main(string[] args) {
-         Console.WriteLine("rewrite");
+         Console.WriteLine("Hello World!");
       }
    }
 }
