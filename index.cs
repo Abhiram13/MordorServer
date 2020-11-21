@@ -22,11 +22,7 @@ namespace MordorServer {
             HttpListenerContext context = http.GetContext();            
             switch (context.Request.RawUrl) {
                case "/":
-                  using (Stream stream = context.Response.OutputStream) {
-                     using (StreamWriter writer = new StreamWriter(stream)) {
-                        writer.Write("Hello World");
-                     }
-                  }
+                  new Response<string>(context).Send("Hello World, this is Class Constructor");
                   break;
                case "/demo":
                   using (Stream stream = context.Response.OutputStream) {
