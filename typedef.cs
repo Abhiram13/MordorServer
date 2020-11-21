@@ -13,9 +13,19 @@ namespace MordorServer {
    }
 
    public class IToken {
-      public ObjectId? _id { get; }
+      public ObjectId? _id { get; set; }
       public string password { get; set; }
       public string username { get; set; }
       public string Token { get; set; }
+   }
+
+   public class IUser {
+      public ObjectId? _id { get; set; }
+      public string username { get; set; }
+      public string firstname { get; set; }
+      public string lastname { get; set; }
+      public string password { get; set; }
+      public bool isAdmin { get; set; }
+      public int? __v { get; set; }
    }
 }

@@ -26,6 +26,11 @@ namespace MordorServer {
                      Database<Item>.fetchAll(context, "items")
                   );
                   break;
+               case "/another":
+                  new Response<string>(context).Send(
+                     Database<IUser>.fetchAll(context, "users")
+                  );
+                  break;
             }
          }
       }
