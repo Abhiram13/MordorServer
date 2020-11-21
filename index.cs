@@ -23,12 +23,12 @@ namespace MordorServer {
                   break;
                case "/demo":
                   new Response<string>(context).Send(
-                     Database<Item>.fetchAll(context, "items")
+                     Collection<Item>.fetchAll(context, "items")
                   );
                   break;
                case "/another":
                   new Response<string>(context).Send(
-                     Database<IUser>.fetchAll(context, "users")
+                     Collection<IUser>.fetchAll(context, "users")
                   );
                   break;
             }
