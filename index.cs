@@ -22,6 +22,15 @@ namespace MordorServer {
                   new Response<string>(context).Send("Hello World, this is Class Constructor");
                   break;
                case "/demo":
+                  foreach (string key in context.Request.Headers.AllKeys) {
+                     string[] values = context.Request.Headers.GetValues(key);
+
+                     foreach (string value in values) {
+                        if (key == "Connection" && value == "keep-alive") {
+                           // Console.WriteLine($"{key}: {value}");
+                        }                        
+                     }
+                  }                  
                   new Response<string>(context).Send(
                      Collection<Item>.fetchAll(context, "items")
                   );
