@@ -15,29 +15,14 @@ namespace MordorServer {
          var base64EncodedBytes = System.Convert.FromBase64String(str);
          return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
       }
-   }
+   }   
 
-   public abstract class Token : String {
-      private static List<IToken> tokenList = Mongo.database.GetCollection<IToken>("tokens").Find<IToken>(new BsonDocument()).ToList<IToken>();
-      private static IToken[] tokens = tokenList.ToArray();
-      private static string s = DateTimeOffset.UtcNow.ToLocalTime().ToString();
-      
-      public virtual string CreateToken(string header) {
-         string username = header.Split(":")[0];
-         string password = header.Split(":")[1];
-         return Encode($"{username}_{password}_{s}");
-      }
-   }
+   public class Auth : Token {
+      public string Headers(HttpListenerRequest request) {
+         string[] values = request.Headers.GetValues("Token");
+         string tokenHeader = values[0];
 
-   public class Auth {
-      public static void Headers(HttpListenerRequest request) {
-         foreach (string key in request.Headers.AllKeys) {
-            string[] values = request.Headers.GetValues(key);
-
-            foreach (string value in values) {
-               if (key == "Token") {}
-            }
-         }
+         return Generate(tokenHeader);
       }
    }
 }
