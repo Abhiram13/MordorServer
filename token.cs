@@ -15,15 +15,10 @@ namespace MordorServer {
       public virtual void Generate(string header) {
          IMongoCollection<IToken> tokenCollection = Mongo.database.GetCollection<IToken>("tokens");
          IToken[] tokens = tokenCollection.Find<IToken>(new BsonDocument()).ToList<IToken>().ToArray();
-         IToken token = null;
          string username = header.Split(":")[0];
          string password = header.Split(":")[1];
 
-         for (int i = 0; i < tokens.Length; i++) {
-            if (tokens[i].username == username) {
-               token = tokens[i];
-            }
-         }
+         IToken token = Array.Find<IToken>(tokens, t => t.username == username);
 
          // token will be null, when no user is found
          // then new token object will be created in Database
@@ -31,12 +26,9 @@ namespace MordorServer {
          if (token == null) {
             tokenCollection.InsertOne(new IToken { username = username, password = password, Token = CreateToken(header), _id = ObjectId.GenerateNewId() });
          } else {
-            Console.WriteLine(username);
-            Console.WriteLine(CreateToken(header));
             var filter = Builders<IToken>.Filter.Eq("username", username);
             var update = Builders<IToken>.Update.Set("Token", CreateToken(header));
             UpdateResult x = tokenCollection.UpdateOne(filter, update);
-            Console.WriteLine(x.ModifiedCount);
          }
       }
    }
