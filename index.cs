@@ -22,7 +22,7 @@ namespace MordorServer {
                   new Response<string>(context).Send("Hello World, this is Class Constructor");
                   break;
                case "/demo":
-                  Console.WriteLine(new Auth().Headers(context.Request));
+                  new Auth().Headers(context.Request);
                   new Response<string>(context).Send(
                      Collection<Item>.fetchAll(context, "items")
                   );

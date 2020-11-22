@@ -6,18 +6,15 @@ using System.Collections.Generic;
 
 namespace MordorServer {
    public abstract class Token : String {
-      private static IMongoCollection<IToken> tokenCollection = Mongo.database.GetCollection<IToken>("tokens");
-      private static List<IToken> tokenList = tokenCollection.Find<IToken>(new BsonDocument()).ToList<IToken>();
-      private static IToken[] tokens = tokenList.ToArray();
-      private static string s = DateTimeOffset.UtcNow.ToLocalTime().ToString();
-
       private string CreateToken(string header) {
          string username = header.Split(":")[0];
          string password = header.Split(":")[1];
-         return Encode($"{username}_{password}_{s}");
+         return Encode($"{username}_{password}_{DateTimeOffset.UtcNow.ToLocalTime().ToString()}");
       }
 
-      public virtual string Generate(string header) {
+      public virtual void Generate(string header) {
+         IMongoCollection<IToken> tokenCollection = Mongo.database.GetCollection<IToken>("tokens");
+         IToken[] tokens = tokenCollection.Find<IToken>(new BsonDocument()).ToList<IToken>().ToArray();
          IToken token = null;
          string username = header.Split(":")[0];
          string password = header.Split(":")[1];
@@ -28,7 +25,19 @@ namespace MordorServer {
             }
          }
 
-         return token.username;
+         // token will be null, when no user is found
+         // then new token object will be created in Database
+         // else if user is found, token value will be updated
+         if (token == null) {
+            tokenCollection.InsertOne(new IToken { username = username, password = password, Token = CreateToken(header), _id = ObjectId.GenerateNewId() });
+         } else {
+            Console.WriteLine(username);
+            Console.WriteLine(CreateToken(header));
+            var filter = Builders<IToken>.Filter.Eq("username", username);
+            var update = Builders<IToken>.Update.Set("Token", CreateToken(header));
+            UpdateResult x = tokenCollection.UpdateOne(filter, update);
+            Console.WriteLine(x.ModifiedCount);
+         }
       }
    }
 }
