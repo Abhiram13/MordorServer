@@ -12,6 +12,11 @@ namespace MordorServer {
       public int? __v { get; set; }
    }
 
+   public class LoginRequest {
+      public string username { get; set; }
+      public string password { get; set; }
+   }
+
    public class IToken {
       public ObjectId? _id { get; set; }
       public string password { get; set; }
@@ -27,5 +32,10 @@ namespace MordorServer {
       public string password { get; set; }
       public bool isAdmin { get; set; }
       public int? __v { get; set; }
+   }
+
+   public class ILogin {
+      public IUser user { get; set; }
+      public string token { get; set; }
    }
 }

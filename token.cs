@@ -8,7 +8,6 @@ namespace MordorServer
 {
    public abstract class Token : String
    {
-
       private IMongoCollection<IToken> TokenCollection()
       {
          return Mongo.database.GetCollection<IToken>("tokens");
