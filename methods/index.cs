@@ -28,7 +28,7 @@ namespace MordorServer {
                   break;
                case "/login":
                   // Generates Token
-                  new Auth().Headers(context.Request);
+                  // new Auth().Headers(context.Request);
 
                   User.Login(context);
 

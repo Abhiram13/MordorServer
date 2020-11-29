@@ -8,7 +8,6 @@ namespace MordorServer
 {
    public class Collection<T>
    {
-
       IMongoCollection<T> collection;
       T[] arrayOfCollection;
 

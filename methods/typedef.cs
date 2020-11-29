@@ -38,4 +38,9 @@ namespace MordorServer {
       public IUser user { get; set; }
       public string token { get; set; }
    }
+
+   public class LoginResponse {
+      public string Token { get; set; }
+      public IUser User { get; set; }
+   }
 }
