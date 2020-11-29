@@ -9,11 +9,6 @@ namespace MordorServer {
       public static IMongoDatabase database = client.GetDatabase("Mordor");
    }
 
-   public class Demo {
-      public string name { get; set; }
-      public int age { get; set; }
-   }
-
    public class Server {
       public static HttpListener http = new HttpListener();
       public static void start() {
@@ -24,17 +19,10 @@ namespace MordorServer {
             HttpListenerContext context = http.GetContext();
             switch (context.Request.RawUrl) {
                case "/":
-                  new Response<Demo>(context).Send(new Demo { age = 25, name = "Abhiram" });
+                  new Response<string>(context).Send("Hello World");
                   break;
                case "/login":
-                  // Generates Token
-                  // new Auth().Headers(context.Request);
-
                   User.Login(context);
-
-                  // new Response<string>(context).Send(
-                  //    new Collection<Item>("items").fetchAll(context)
-                  // );
                   break;
                case "/another":
                   new Response<string>(context).Send(

@@ -11,22 +11,18 @@ namespace MordorServer {
          return new Collection<IUser>("users").find(context, t => t.username == body.username);
       }
 
-      private static void FetchToken(HttpListenerContext context) { 
-
-      }
-
       public static void Login(HttpListenerContext context) {
-         IUser res = User.FetchDetails(context);
+         IUser user = User.FetchDetails(context);
 
-         if (res == null) {
+         if (user == null) {
             new Response<string>(context).Send("User does not Exist");
          } else {
-            string str = $"{res.username}:{res.password}";
+            string str = $"{user.username}:{user.password}";
             Console.WriteLine();
 
             LoginResponse response = new LoginResponse() {
                Token = new Auth().Generate(str).Token,
-               User = res
+               User = user
             };
 
             new Response<string>(context).Send(JsonSerializer.Serialize<LoginResponse>(response));

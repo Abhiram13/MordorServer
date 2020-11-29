@@ -1,8 +1,6 @@
 using System;
-using System.Net;
 using MongoDB.Driver;
 using MongoDB.Bson;
-using System.Collections.Generic;
 
 namespace MordorServer {
    public abstract class Token : String {
