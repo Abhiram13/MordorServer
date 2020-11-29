@@ -27,10 +27,14 @@ namespace MordorServer {
                   new Response<Demo>(context).Send(new Demo { age = 25, name = "Abhiram" });
                   break;
                case "/login":
+                  // Generates Token
                   new Auth().Headers(context.Request);
-                  new Response<string>(context).Send(
-                     new Collection<Item>("items").fetchAll(context)
-                  );
+
+                  User.Login(context);
+
+                  // new Response<string>(context).Send(
+                  //    new Collection<Item>("items").fetchAll(context)
+                  // );
                   break;
                case "/another":
                   new Response<string>(context).Send(

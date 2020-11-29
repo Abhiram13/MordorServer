@@ -20,7 +20,16 @@ namespace MordorServer
 
       public static void Login(HttpListenerContext context)
       {
+         // catch username and password
+         // search database for the user
+         // if exists, check is password is correct
+         ///////// if wrong, user must sign in
+         // else, generate token and send it to user
 
+         if (User.FetchDetails(context) == null)
+         {
+            new Response<string>(context).Send("User does not Exist");
+         }
       }
    }
 }

@@ -3,6 +3,7 @@ using System.Net;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Routing;
 
 namespace MordorServer
 {
@@ -28,6 +29,10 @@ namespace MordorServer
          string[] values = request.Headers.GetValues("Token");
          string tokenHeader = values[0];
          Generate(tokenHeader);
+      }
+
+      public static void Method(HttpListenerContext context, string method)
+      {
       }
    }
 }
