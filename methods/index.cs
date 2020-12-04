@@ -24,6 +24,9 @@ namespace MordorServer {
                case "/login":
                   User.Login(context);
                   break;
+               case "/signin":
+                  User.SignIn(context);
+                  break;
                case "/another":
                   new Response<string>(context).Send(
                      new Collection<IUser>("users").fetchAll(context)
