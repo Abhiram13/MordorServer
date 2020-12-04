@@ -5,8 +5,9 @@ using System.IO;
 
 namespace MordorServer {
    public class Mongo {
-      private static MongoClient client = new MongoClient("mongodb+srv://abhiramDB:abhiram13@myfirstdatabase.l8kvg.mongodb.net/Mordor?retryWrites=true&w=majority");
-      public static IMongoDatabase database = client.GetDatabase("Mordor");
+      private static string url = $"mongodb+srv://{Config.username}:{Config.password}@myfirstdatabase.l8kvg.mongodb.net/{Config.cluster}?retryWrites=true&w=majority";
+      private static MongoClient client = new MongoClient(url);
+      public static IMongoDatabase database = client.GetDatabase(Config.dbname);
    }
 
    public class Server {
