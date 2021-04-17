@@ -3,22 +3,28 @@ using MongoDB.Driver;
 using System.Net;
 using System.IO;
 
-namespace MordorServer {
-   public class Mongo {
+namespace MordorServer
+{
+   public class Mongo
+   {
       private static string url = $"mongodb+srv://{Config.username}:{Config.password}@myfirstdatabase.l8kvg.mongodb.net/{Config.cluster}?retryWrites=true&w=majority";
       private static MongoClient client = new MongoClient(url);
       public static IMongoDatabase database = client.GetDatabase(Config.dbname);
    }
 
-   public class Server {
+   public class Server
+   {
       public static HttpListener http = new HttpListener();
-      public static void start() {
+      public static void start()
+      {
          http.Prefixes.Add("http://localhost:1995/");
          http.Start();
          Console.WriteLine("Server had Started");
-         while (true) {
+         while (true)
+         {
             HttpListenerContext context = http.GetContext();
-            switch (context.Request.RawUrl) {
+            switch (context.Request.RawUrl)
+            {
                case "/":
                   new Response<string>(context).Send("Hello World");
                   break;

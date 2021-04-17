@@ -1,7 +1,9 @@
 using MongoDB.Bson;
 
-namespace MordorServer {   
-   public class Item {
+namespace MordorServer
+{
+   public class Item
+   {
       public ObjectId? _id { get; set; }
       public string itemName { get; set; }
       public string description { get; set; }
@@ -12,19 +14,22 @@ namespace MordorServer {
       public int? __v { get; set; }
    }
 
-   public class LoginRequest {
+   public class LoginRequest
+   {
       public string username { get; set; }
       public string password { get; set; }
    }
 
-   public class IToken {
+   public class IToken
+   {
       public ObjectId? _id { get; set; }
       public string password { get; set; }
       public string username { get; set; }
       public string Token { get; set; }
    }
 
-   public class IUser {
+   public class IUser
+   {
       public ObjectId? _id { get; set; }
       public string username { get; set; }
       public string firstname { get; set; }
@@ -34,12 +39,14 @@ namespace MordorServer {
       public int? __v { get; set; }
    }
 
-   public class ILogin {
+   public class ILogin
+   {
       public IUser user { get; set; }
       public string token { get; set; }
    }
 
-   public class LoginResponse {
+   public class LoginResponse
+   {
       public string Token { get; set; }
       public IUser User { get; set; }
    }
